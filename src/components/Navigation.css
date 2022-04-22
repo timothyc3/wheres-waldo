@@ -1,0 +1,48 @@
+.navigation {
+    height: 100px;
+    background-color: white;
+    box-shadow: 0 2px 20px -10px black;
+    position: fixed;
+    z-index: 9999;
+
+    float: left;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation * {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.navigation img {
+    width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    height: 100%;
+
+}
+
+.navigation ul li {
+    height: 100%;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s;
+}
+
+.navigation ul li:hover {
+    background-color: pink;
+}

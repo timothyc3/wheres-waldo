@@ -1,0 +1,22 @@
+.selection-panel {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(750px, 1fr));
+    grid-gap: 10px;
+    width: 80%;
+}
+
+.selection-panel h1 {
+    grid-row: 1;
+    grid-column: 1/-1;
+}
+
+.selection-panel img {
+    box-sizing: border-box;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    height: 80%;
+
+    border: 2px black solid;
+}
