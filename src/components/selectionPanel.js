@@ -36,7 +36,8 @@ export default function SelectionPanel() {
         getImages().catch(console.error)
         }, []);
 
-    const selectionList = imageState.map((item, index) => <div key={item.urlName} className={'selection'}>
+    const selectionList = imageState.map((item, index) =>
+        <div key={item.urlName} className={'selection'}>
         {(item.loading === true && item.result === null) ?
             <ion-icon name="reload-outline"></ion-icon> :
             <img src={item.result} alt=""/>
