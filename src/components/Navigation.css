@@ -1,6 +1,6 @@
 .navigation {
     height: 100px;
-    background-color: white;
+    background-color: rgb(238, 238, 238);
     box-shadow: 0 2px 20px -10px black;
     position: fixed;
     z-index: 9999;
