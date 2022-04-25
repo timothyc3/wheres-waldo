@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {getDownloadURL, ref} from "firebase/storage";
 import {storage} from '../firebase';
+import { Link } from 'react-router-dom'
 import './selectionPanel.css'
 
 export default function SelectionPanel() {
@@ -37,18 +38,19 @@ export default function SelectionPanel() {
         }, []);
 
     const selectionList = imageState.map((item, index) =>
-        <div key={item.urlName} className={'selection'}>
+        <Link key={item.urlName} className={'selection'}
+              to='/Game'
+              state={{imageUrl: item.result}}>
         {(item.loading === true && item.result === null) ?
             <ion-icon name="reload-outline"></ion-icon> :
             <img src={item.result} alt=""/>
         }
         <h3>level {index + 1}</h3>
-        </div>);
+        </Link>);
 
 
     return (
         <div className={'selection-panel'}>
-            <h1>Choose your map</h1>
             {selectionList}
         </div>
     )

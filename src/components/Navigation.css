@@ -31,7 +31,11 @@
     list-style: none;
     display: flex;
     height: 100%;
+}
 
+.navigation ul a {
+    text-decoration: none;
+    color: black;
 }
 
 .navigation ul li {
