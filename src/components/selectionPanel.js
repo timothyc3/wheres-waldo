@@ -40,7 +40,7 @@ export default function SelectionPanel() {
     const selectionList = imageState.map((item, index) =>
         <Link key={item.urlName} className={'selection'}
               to='/Game'
-              state={{imageUrl: item.result}}>
+              state={{imageUrl: item.result, level: index + 1}}>
         {(item.loading === true && item.result === null) ?
             <ion-icon name="reload-outline"></ion-icon> :
             <img src={item.result} alt=""/>

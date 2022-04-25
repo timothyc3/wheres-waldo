@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getFirestore(app);
+const gameInfo = getFirestore(app);
 const storage = getStorage(app);
 
-export {app, analytics, storage}
+export {app, gameInfo, storage}
