@@ -1,9 +1,10 @@
 import './Game.css';
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { useLocation } from "react-router-dom";
 import './Game.css';
-import { gameInfo } from "../firebase";
+import {gameInfo, storage} from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import {getDownloadURL, ref} from "firebase/storage";
 
 export default function Game() {
     const location = useLocation();
@@ -11,8 +12,9 @@ export default function Game() {
     // stores the coordinate of the players target
     const [playerClick, setPlayerClick] = useState({display: "none", x: 0, y: 0});
 
-    // expected shape: {waldo: true, wilma: true}, characters not present should not be listed in this object.
-    const [characterInfo, setCharacterInfo] = useState();
+    // expected shape: [{name: waldo, url: some-url-to-backend}, {name: wilma, url: some-url-to-backend}],
+    // characters not present should not be listed in this object.
+    const [characterInfo, setCharacterInfo] = useState([]);
 
     // width and height of the player's click check range
     const targetWidth = 30;
@@ -25,7 +27,6 @@ export default function Game() {
         const gameDiv = event.target.getBoundingClientRect().y;
 
         setPlayerClick({...playerClick, x: event.pageX, y: event.clientY- gameDiv, display: 'inline'});
-
     }
 
     // call the data from backend
@@ -42,10 +43,11 @@ export default function Game() {
     }
 
     // call the backend to check what are the present characters for the particular level
-    function initializeCharacterInfo(data) {
-        const resultObjectArray = {};
+    async function initializeCharacterInfo(data) {
+        const resultObjectArray = [];
         for (const [key,] of Object.entries(data)) {
-            resultObjectArray[key] = true;
+            const iconUrl = await getDownloadURL(ref(storage, `${key}-icon.png`));
+            resultObjectArray.push({name: key, url: iconUrl});
         }
         setCharacterInfo(resultObjectArray)
     }
@@ -67,18 +69,37 @@ export default function Game() {
 
     // initialize the characterInfo state for the first and only time
     useEffect( () => {
-        getCharacterData().then( data => initializeCharacterInfo(data));
+        getCharacterData()
+            .then( data => initializeCharacterInfo(data));
     }, [])
 
+    // this useEffect is only called when characterInfo state is updated, not on mount.
+    const isInitialMount = useRef(true);
+    const characterHud = useRef(null);
     useEffect(() => {
-        getCharacterData().then(data => checkSelection(data));
-    }, [playerClick])
+
+        if (isInitialMount.current === true) {
+            isInitialMount.current = false;
+        }
+        else if (isInitialMount.current === false) {
+            characterHud.current = characterInfo.map(character => <img src={character.url} alt=""/>);
+            console.log(characterHud)
+        }
+
+    }, [characterInfo])
+
+    // whenever playerClick state is updated (player clicks on game), we check selection against the
+    // location of the characters on the game.
+    useEffect(() => {
+        getCharacterData()
+            .then(data => checkSelection(data));
+    }, [playerClick]);
 
     return (
         <div className={'game'}>
             <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}></img>
             <div className="found-characters">
-
+                {characterHud.current}
             </div>
             {playerClick && (<div className="target" style={
                 {   width: `${targetWidth}px`,
