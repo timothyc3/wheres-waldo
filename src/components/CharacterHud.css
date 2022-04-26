@@ -1,0 +1,15 @@
+.found-characters {
+    box-sizing: border-box;
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    height: 100px;
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(238, 238, 238, 0.95);
+}
+
+.found-characters img {
+    height: 100%;
+}

@@ -1,6 +1,6 @@
 /// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {doc, getDoc, getFirestore} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -23,4 +23,17 @@ const app = initializeApp(firebaseConfig);
 const gameInfo = getFirestore(app);
 const storage = getStorage(app);
 
-export {app, gameInfo, storage}
+// call the data from backend
+async function getCharacterData(location) {
+    const characterInfoDocument = doc(gameInfo, "character-info",
+        `level-${location.state.level}`);
+    const infoSnapshot = await getDoc(characterInfoDocument);
+
+    if (infoSnapshot.exists()) {
+        return infoSnapshot.data();
+    } else {
+        throw new Error('document not found');
+    }
+}
+
+export {app, gameInfo, storage, getCharacterData}
