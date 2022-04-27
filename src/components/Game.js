@@ -106,16 +106,19 @@ export default function Game() {
 
     // check whether the player has found all the characters
     useEffect(() =>  {
-        if (characterInfo.every(character => character.found === true)) {
+        if (characterInfo.every(character => character.found === true) && characterInfo.length > 0) {
             setComplete(true);
         }
     }, [characterInfo])
 
     // starts timer when the component renders
     useEffect(() => {
-        const interval = setInterval(() => setTime(time + 1), 1000);
+        let interval;
+        if (complete === false) {
+            interval = setInterval(() => setTime((time) => {console.log(complete); return time+1}), 1000);
+        }
         return () => clearInterval(interval)
-    });
+    }, [complete]);
 
 
 
@@ -123,7 +126,7 @@ export default function Game() {
         <div className={'game'}>
             <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}></img>
             <CharacterHud data={characterInfo}/>
-            <Timer time={time} complete={complete}/>
+            <Timer time={time}/>
             {playerClick && (<div className="target" style={
                 {   width: `${targetWidth}px`,
                     height: `${targetHeight}px`,
