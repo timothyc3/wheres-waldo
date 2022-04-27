@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import './CharacterHud.css';
-import {getDownloadURL, ref} from "firebase/storage";
-import {storage, getCharacterData} from "../firebase";
 
 export default function CharacterHud(props) {
 
