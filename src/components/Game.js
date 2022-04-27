@@ -64,7 +64,13 @@ export default function Game() {
 
         // loop through nested object and check player selection
         for (const [key, object] of Object.entries(data)) {
-            if (checkSelected(object).every(test => test === true)) {console.log(`${key} found`)}
+            // if this Array.every returns true, it means for the character being checked, the user has passed all checks
+            // to determine whether they clicked on the character
+            if (checkSelected(object).every(test => test === true)) {
+                const updatedCharacterInfo = characterInfo.map(character => character.name === key ?
+                    {...character, found: true} : character);
+                setCharacterInfo(updatedCharacterInfo);
+            }
         }
 
     }
@@ -74,7 +80,7 @@ export default function Game() {
         const resultObjectArray = [];
         for (const [key,] of Object.entries(data)) {
             const iconUrl = await getDownloadURL(ref(storage, `${key}-icon.png`));
-            resultObjectArray.push({name: key, url: iconUrl});
+            resultObjectArray.push({name: key, url: iconUrl, found: false});
         }
         setCharacterInfo(resultObjectArray)
     }
