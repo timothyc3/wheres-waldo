@@ -1,6 +1,11 @@
 .game {
     display: inline-block;
-    overflow: auto;
+    height: calc(100vh - 100px);
+    width: 100vw;
+}
+
+.game img {
+    object-fit: cover;
 }
 
 .target {

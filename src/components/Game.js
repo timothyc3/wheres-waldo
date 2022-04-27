@@ -1,10 +1,11 @@
 import './Game.css';
 import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import {getCharacterData, storage} from "../firebase";
-import CharacterHud from '../components/CharacterHud.js'
 import {getDownloadURL, ref} from "firebase/storage";
+import {getCharacterData, storage} from "../firebase";
+import CharacterHud from './CharacterHud.js'
 import Timer from "./Timer";
+import LeaderboardForm from "./LeaderboardForm";
 
 export default function Game() {
     const location = useLocation();
@@ -17,7 +18,7 @@ export default function Game() {
     const [characterInfo, setCharacterInfo] = useState([]);
     // create a state to store the timer for the player
     const [time, setTime] = useState(0);
-    // the complete state deterimines whether the game is still in play or not.
+    // the complete state determines whether the game is still in play or not.
     const [complete, setComplete] = useState(false);
 
     // width and height of the player's click check range
@@ -115,18 +116,21 @@ export default function Game() {
     useEffect(() => {
         let interval;
         if (complete === false) {
-            interval = setInterval(() => setTime((time) => {console.log(complete); return time+1}), 1000);
+            interval = setInterval(() => setTime((time) => {return time+1}), 1000);
         }
-        return () => clearInterval(interval)
+        return () => clearInterval(interval);
     }, [complete]);
 
-
-
     return (
-        <div className={'game'}>
-            <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}></img>
+        <div className={'game'}
+             style={{overflow: complete === true ? 'hidden' : 'visible'}}>
+            <img className='game-image'
+            src={location.state.imageUrl}
+            alt={''} onClick={clickImage}>
+            </img>
             <CharacterHud data={characterInfo}/>
-            <Timer time={time}/>
+            {complete === false && <Timer time={time}/>}
+            {complete === true && <LeaderboardForm time={time}/>}
             {playerClick && (<div className="target" style={
                 {   width: `${targetWidth}px`,
                     height: `${targetHeight}px`,
