@@ -1,6 +1,6 @@
 /// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {doc, getDoc, getFirestore} from "firebase/firestore";
+import {doc, collection, getDoc, getFirestore, addDoc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -36,4 +36,10 @@ async function getCharacterData(location) {
     }
 }
 
-export {app, gameInfo, storage, getCharacterData}
+async function handleScoreSubmit(data) {
+    try {
+        await addDoc(collection(gameInfo, "leaderboard"), {name: data.name, time: data.time});
+    } catch (error) {alert(error)}
+}
+
+export {app, gameInfo, storage, getCharacterData, handleScoreSubmit}

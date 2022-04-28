@@ -123,8 +123,7 @@ export default function Game() {
 
     return (
         <div className={'game'} style={{overflow: complete === true ? 'hidden' : 'visible'}}>
-            <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}>
-            </img>
+            <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}></img>
             <CharacterHud data={characterInfo}/>
             {complete === false && <Timer time={time}/>}
             <LeaderboardForm time={time} styles={

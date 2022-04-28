@@ -76,10 +76,11 @@
     height: 30px;
     border-radius: 10px;
     border: none;
+    background-color: whitesmoke;
 }
 
 .form-container form ul li input[type='submit']:hover {
-    background-color: dimgrey;
+    background-color: darkgray;
 }
 
 .form-container form ul li h3 {
