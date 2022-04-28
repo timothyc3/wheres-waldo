@@ -35,10 +35,11 @@ export default function LeaderboardForm(props) {
                             }
                         }}/>
                         <h3>or <Link to='/'>return to main menu</Link></h3>
-                    </li>
-
-                    <li style={{visibility: submitted ? 'visible' : 'hidden'}}>
-                        <h3>Submission Complete</h3>
+                        <div className='submit-message'
+                             style={{visibility: submitted ? 'visible' : 'hidden'}}>
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            <h3>Submission Complete</h3>
+                        </div>
                     </li>
                 </ul>
             </form>

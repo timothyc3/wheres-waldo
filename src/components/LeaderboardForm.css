@@ -45,17 +45,19 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    height: 100%;
     justify-content: center;
     align-items: center;
     gap: 5%;
 }
 
 .form-container form ul li {
+    --spacing: 5px;
+
     width: 80%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: var(--spacing);
+    position: relative;
 }
 
 .form-container form ul li input[type='text'] {
@@ -91,6 +93,24 @@
 .form-container form ul li h3 a {
     color: indianred;
     text-decoration: none;
+}
+
+.form-container form ul li .submit-message {
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    width: 100%;
+    padding-top: calc(var(--spacing) * 2);
+    gap: 5px;
+    display: flex;
+    flex-direction: initial;
+    justify-content: center;
+    color: green;
+    align-items: center;
+}
+
+.form-container form ul .submit-message ion-icon {
+    font-size: 24px;
 }
 
 .form-container form .accent {
