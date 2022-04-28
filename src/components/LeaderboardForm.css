@@ -3,7 +3,7 @@
     position: fixed;
     top: 100px;
     width: 100%;
-    transition: background-color 1s linear;
+    transition: background-color 0.5s linear;
     justify-content: center;
     align-items: start;
     padding-top: clamp(50px, 8vh, 80px);
@@ -13,7 +13,7 @@
     position: relative;
     background-color: whitesmoke;
     width: clamp(600px, 45vw, 800px);
-    height: 70%;
+    height: 60%;
     max-width: 80%;
     border-radius: 10px;
     grid-template-columns: 2fr 3fr;
@@ -41,18 +41,18 @@
 }
 
 .form-container form ul {
+    --spacing: 10px;
+
     background-color: lightgrey;
     list-style: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5%;
+    gap: var(--spacing);
 }
 
 .form-container form ul li {
-    --spacing: 5px;
-
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -72,6 +72,11 @@
     box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.1);
 }
 
+.form-container form ul li input[type='text']:invalid {
+    outline-color: mediumvioletred;
+    border-color: mediumvioletred;
+}
+
 .form-container form ul li input[type='submit'] {
     margin: 0 auto;
     width: 60%;
@@ -81,7 +86,7 @@
     background-color: whitesmoke;
 }
 
-.form-container form ul li input[type='submit']:hover {
+.form-container form ul li input[type='submit'][disabled=false]:hover {
     background-color: darkgray;
 }
 
@@ -93,6 +98,16 @@
 .form-container form ul li h3 a {
     color: indianred;
     text-decoration: none;
+}
+
+.form-container form ul li h4 {
+    color: darkred;
+    font-size: 12px;
+    visibility: hidden;
+}
+
+.form-container form ul li input:not(:placeholder-shown):invalid + h4 {
+    visibility: visible;
 }
 
 .form-container form ul li .submit-message {
