@@ -122,16 +122,16 @@ export default function Game() {
     }, [complete]);
 
     return (
-        <div className={'game'}
-             style={{overflow: complete === true ? 'hidden' : 'visible'}}>
-            <img className='game-image'
-            src={location.state.imageUrl}
-            alt={''} onClick={clickImage}>
+        <div className={'game'} style={{overflow: complete === true ? 'hidden' : 'visible'}}>
+            <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}>
             </img>
             <CharacterHud data={characterInfo}/>
             {complete === false && <Timer time={time}/>}
-            {complete === true && <LeaderboardForm time={time}/>}
-            {playerClick && (<div className="target" style={
+            <LeaderboardForm time={time} styles={
+                {height: complete === false ? '0' : '100%',
+                backgroundColor: complete === false ? 'transparent' : 'rgba(0,0,0,0.9)'}
+            } displayMode={{display: complete === false ? 'none' : 'grid'}}/>
+            {playerClick && complete === false && (<div className="target" style={
                 {   width: `${targetWidth}px`,
                     height: `${targetHeight}px`,
                     left: playerClick.x - targetWidth/2,

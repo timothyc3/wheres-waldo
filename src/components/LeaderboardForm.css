@@ -1,7 +1,83 @@
-.formContainer {
+.form-container {
+    display: flex;
     position: fixed;
     top: 100px;
-    background-color: rgba(0,0,0,0.9);
     width: 100%;
+    transition: background-color 1s linear;
+    justify-content: center;
+    align-items: start;
+    padding-top: clamp(50px, 8vh, 80px);
+}
+
+.form-container form {
+    background-color: whitesmoke;
+    width: clamp(600px, 45vw, 800px);
+    height: 70%;
+    max-width: 80%;
+    border-radius: 5px;
+    grid-template-columns: 2fr 3fr;
+    overflow: hidden;
+}
+
+.form-container form .score {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+.form-container form .score .timer {
+    background-color: transparent;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+}
+
+.form-container form .score .timer h1 {
+    font-size: 82px;
+}
+
+.form-container form ul {
+    background-color: lightgrey;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.form-container form ul li {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-container form ul li input[type='text'] {
+    border: #deddde solid 1px;
+    border-radius: 6px;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.form-container form ul li input[type='text']:focus {
+    outline: lightgreen 1px solid;
+    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.1);
+}
+
+.form-container form ul li input[type='submit'] {
+    margin: 0 auto;
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+.form-container form ul li input[type='submit']:hover {
+    background-color: dimgrey;
 }
