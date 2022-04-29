@@ -1,6 +1,8 @@
+@value --navigation-bar-height from "../App.js";
+
 .game {
     display: inline-block;
-    height: calc(100vh - 100px);
+    height: calc(100vh - var(--navigation-bar-height));
     width: 100vw;
 }
 

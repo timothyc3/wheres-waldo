@@ -1,7 +1,9 @@
+@value --navigation-bar-height from "../App.js";
+
 .found-characters {
     box-sizing: border-box;
     position: fixed;
-    top: 120px;
+    top: calc(20px + var(--navigation-bar-height));
     left: 20px;
     height: 100px;
     width: auto;

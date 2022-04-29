@@ -1,4 +1,57 @@
+@value --navigation-bar-height from "../App.js";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
 .leaderboard-page {
-    background-color: red;
+    --item-width: 60%;
+
     width: 100%;
+    height: calc(100vh - var(--navigation-bar-height));
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-top: 50px;
+    flex-direction: column;
+}
+
+.leaderboard-page ul {
+    overflow: hidden;
+    list-style: none;
+    display: grid;
+    width: var(--item-width);
+    grid-template-columns: repeat(4, 1fr);
+    height: 40px;
+    column-gap: 2px;
+}
+
+.leaderboard-page ul li {
+    background-color: cornflowerblue;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.leaderboard-page table {
+    border: 1px solid grey;
+    width: var(--item-width);
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.leaderboard-page table thead {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    height: 50px;
+    box-shadow: 0 10px 10px -15px black;
+}
+
+.leaderboard-page table tbody {
+    text-align: center;
+}
+
+.leaderboard-page table tbody tr {
+    height: 50px;
+    padding: 10px;
 }

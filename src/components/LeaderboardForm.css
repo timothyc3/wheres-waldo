@@ -1,7 +1,9 @@
+@value --navigation-bar-height from "../App.js";
+
 .form-container {
     display: flex;
     position: fixed;
-    top: 100px;
+    top: var(--navigation-bar-height);
     width: 100%;
     transition: background-color 0.5s linear;
     justify-content: center;

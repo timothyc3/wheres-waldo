@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+:root {
+    --navigation-bar-height: 100px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +16,7 @@
 
 .app > :not(.navigation) {
     position: relative;
-    top: 100px;
+    top: var(--navigation-bar-height);
 }
 
 .app > .home {
