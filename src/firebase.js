@@ -1,9 +1,8 @@
 /// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {doc, collection, getDoc, getFirestore, addDoc } from "firebase/firestore";
+import {doc, collection, getDoc, getDocs ,getFirestore, addDoc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -36,10 +35,21 @@ async function getCharacterData(location) {
     }
 }
 
+async function getLeaderboardData() {
+    const leaderboardCollection = collection(gameInfo, "leaderboard");
+    let result = [];
+    const leaderboardSnapshot = await getDocs(leaderboardCollection)
+    leaderboardSnapshot.forEach((document) => {
+        result.push(document.data())
+    })
+
+    return result
+}
+
 async function handleScoreSubmit(data) {
     try {
-        await addDoc(collection(gameInfo, "leaderboard"), {name: data.name, time: data.time});
+        await addDoc(collection(gameInfo, "leaderboard"), data);
     } catch (error) {alert(error)}
 }
 
-export {app, gameInfo, storage, getCharacterData, handleScoreSubmit}
+export {app, gameInfo, storage, getCharacterData, handleScoreSubmit, getLeaderboardData}

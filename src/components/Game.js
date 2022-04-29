@@ -123,19 +123,25 @@ export default function Game() {
 
     return (
         <div className={'game'} style={{overflow: complete === true ? 'hidden' : 'visible'}}>
+
             <img className='game-image' src={location.state.imageUrl} alt={''} onClick={clickImage}></img>
+
             <CharacterHud data={characterInfo}/>
             {complete === false && <Timer time={time}/>}
-            <LeaderboardForm time={time} styles={
-                {height: complete === false ? '0' : '100%',
-                backgroundColor: complete === false ? 'transparent' : 'rgba(0,0,0,0.9)'}
-            } displayMode={{display: complete === false ? 'none' : 'grid'}}/>
+
+            <LeaderboardForm time={time} styles={{
+                height: complete === false ? '0' : '100%',
+                backgroundColor: complete === false ? 'transparent' : 'rgba(0,0,0,0.9)'}}
+                             location={location}
+                             displayMode={{display: complete === false ? 'none' : 'grid'}}/>
+
             {playerClick && complete === false && (<div className="target" style={
                 {   width: `${targetWidth}px`,
                     height: `${targetHeight}px`,
                     left: playerClick.x - targetWidth/2,
                     top: playerClick.y - targetHeight/2,
                     display: playerClick.display}}></div>)}
+
         </div>
     );
 }

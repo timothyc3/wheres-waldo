@@ -9,10 +9,8 @@ export default function SelectionPanel() {
     const [imageState, setImageState] = useState([
             {urlName: 'waldo-1.jpg', loading: false, result: null},
             {urlName: 'waldo-2.jpg', loading: false, result: null},
-            {urlName: 'waldo-3.png', loading: false, result: null},
+            {urlName: 'waldo-3.jpg', loading: false, result: null},
             {urlName: 'waldo-4.jpg', loading: false, result: null},
-            {urlName: 'waldo-5.jpg', loading: false, result: null},
-            {urlName: 'waldo-6.jpg', loading: false, result: null},
         ]
     );
 

@@ -73,8 +73,8 @@
 }
 
 .form-container form ul li input[type='text']:invalid {
-    outline-color: mediumvioletred;
-    border-color: mediumvioletred;
+    outline-color: indianred;
+    border-color: indianred;
 }
 
 .form-container form ul li input[type='submit'] {
