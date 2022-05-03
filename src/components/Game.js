@@ -30,7 +30,7 @@ export default function Game() {
         // get game div's location on the page, to get the coordinates in reference to within this div only
         // this is to offset the navigation menu
         const gameDiv = event.target.getBoundingClientRect().y;
-        setPlayerClick({...playerClick, x: event.pageX, y: event.clientY- gameDiv, display: 'inline'});
+        setPlayerClick({...playerClick, x: event.pageX, y: event.clientY- gameDiv});
     }
 
     // initialize the characterInfo by calling the backend
