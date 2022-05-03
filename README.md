@@ -1,70 +1,12 @@
-# Getting Started with Create React App
+## Project Name & Pitch
+An application used to play 'Find Waldo', which involves the user finding the characters in the Waldo franchise for the pictures selected in the game.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Status
+1.0 version: Complete, the core game now works as intended
 
-## Available Scripts
+## Reflection
+The context of this project was to learn more about full stack development, as this is the first implementation of a backend in my webpages since learning about them. I wanted to create using the backend system a way to validate the user's input such that they cannot easily cheat by editing the system. I also wanted to give a way for the user to record their high scores and view them to compare scores to other user that are using this page.
 
-In the project directory, you can run:
+This was a great learning experience as it provided the opportunity for me to learn how to connect the front end to back end. As I used firebase as my backend, the emphasis for this project is the interconnection between the two, not the actual setting up of the backend itself. As react itself is still relatively new to me having only used it for two months, I am still familiarizing myself with the language, using this as an opportunity to practise using functional components and hooks.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The biggest challenge of this project is definitely the validation of user actions and being able to logically determine how to log the actions themselves to achieve that. In the end, the method I decided to go with is the coordinates on the page itself that the user clicked on and aligning it with the position of the game image in order to know where the user clicked. Although that would mean other elements such as the navigation bar would need to be accounted for, this solution served my purpose sufficently.
